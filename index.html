@@ -42,7 +42,7 @@
                                 <div class="button"id ="">C</div>
                             </div>
                             <div>
-                                <button type="submit" class="submit-btn">Submit</button>
+                                <button id="submit" type="submit" class="submit-btn">Submit</button>
                                 <p class="action-left">3 try left</p>
                             </div>
                     </div>
@@ -56,10 +56,10 @@
     </div>
 
     <script>
-        //first work-hide
+        //step-1->hide
         let notMatch=document.getElementById("notMatch").style.display='none';
         let match=document.getElementById("match").style.display='none';
-        //second work-generate random 4 digit pin
+        //step-2->generate pin
         let generatePin=document.getElementById("clickPin")
         generatePin.addEventListener("click",function(){
             let num=Math.random()*9000+1000;
@@ -67,7 +67,7 @@
             let random=document.getElementById("generateRandom");
             random.value=randomNumber;  
         })
-        //third work
+        //step-3->handel numbers
         let store=""
        function handleNumber(id){
            let number=document.getElementById(id).innerText;
@@ -77,6 +77,26 @@
             let finalNum=parseInt(store);
             output.value=finalNum;
        }
+       //step-4->compare two inputs
+       let submit=document.getElementById("submit")
+       submit.addEventListener("click",function(){
+           let random=document.getElementById("generateRandom");
+           let randomString=inToString(generateRandom.value);
+           let output=document.getElementById("output");
+           let outputString=inToString(output.value); 
+           if(randomString.trim()==outputString.trim()){
+            document.getElementById("match").style.display='block';   
+            }
+            else{
+                document.getElementById("notMatch").style.display='block';
+            }
+       })
+       function inToString(num){
+           return num.toString()
+       }
+       //step-5->operator c and < work
+       
+
     </script>
 </body>
 </html>
