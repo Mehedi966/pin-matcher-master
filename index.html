@@ -37,9 +37,9 @@
                               <div onclick="handleNumber('3')" class="button"id ="3">3</div>
                             </div>
                             <div class="calc-button-row">
-                                <div class="button"id =""><</div>
+                                <div onclick="handleOneChar()" class="button"id ="delOneChar"><</div>
                                 <div onclick="handleNumber('0')" class="button"id ="0">0</div>
-                                <div class="button"id ="">C</div>
+                                <div onclick="handleAllChar()" class="button"id ="">C</div>
                             </div>
                             <div>
                                 <button id="submit" type="submit" class="submit-btn">Submit</button>
@@ -95,7 +95,17 @@
            return num.toString()
        }
        //step-5->operator c and < work
-       
+       function handleOneChar(){
+        let output=document.getElementById("output");
+        let outputString=inToString(output.value);  
+        outputString = outputString.substring(0, outputString.length - 1); 
+        outputNumber=parseInt(outputString);
+        output.value=outputNumber;
+       }
+       function handleAllChar(){
+        let output=document.getElementById("output");
+        output.value="";
+       }
 
     </script>
 </body>
